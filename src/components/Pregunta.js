@@ -4,6 +4,8 @@ const Pregunta = () => {
 
     // Creando el state
     const [ cantidad, guardarCantidad ] = useState(0);
+    const [ error, guardarError ] = useState(false);
+
 
 
     // Función para leer el presupuesto
@@ -20,8 +22,13 @@ const Pregunta = () => {
         e.preventDefault();
 
         // Validar
+        if (cantidad < 1 || isNaN( cantidad ) ) {
+            guardarError(true);
+            return;
+        }
 
         // Paso de validacion
+        guardarError(false);
     }
 
     
