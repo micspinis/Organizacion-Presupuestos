@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error'
 
-const Pregunta = () => {
+const Pregunta = ({ guardarPresupuesto, guardarRestante }) => {
 
     // Creando el state
     const [ cantidad, guardarCantidad ] = useState(0);
@@ -30,6 +30,8 @@ const Pregunta = () => {
 
         // Paso de validacion
         guardarError(false);
+        guardarPresupuesto(cantidad);
+        guardarRestante(cantidad);
     }
 
     
@@ -37,7 +39,7 @@ const Pregunta = () => {
     return ( 
         <Fragment>
             <h2>Coloca tu presupuesto</h2>
-            {error ? <Error mensaje="El presupuesto es incorrect" /> : null}
+            {error ? <Error mensaje="El presupuesto es incorrecto" /> : null}
             <form
                 // Evento para el submit
                 onSubmit={agregarPresupuesto}
